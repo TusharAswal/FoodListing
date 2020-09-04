@@ -1,7 +1,6 @@
 import idx from 'idx';
 
 export const titleFilter = (array, searchedText) => {
-  let filteredResult = [];
   return idx(array, (_) =>
     _.categories.filter((value) => {
       if (
@@ -9,31 +8,27 @@ export const titleFilter = (array, searchedText) => {
           .toLowerCase()
           .includes(searchedText.toLowerCase())
       ) {
-        console.log(value, 'ONE=======>');
         return value;
       } else if (
-        idx(value, (_) =>
-          _.category.subcategories.filter((item) => {
+        value.category.subcategories.filter((item) => {
+          if (
             item.subCategoryname
               .toLowerCase()
-              .includes(searchedText.toLowerCase());
-          }),
-        )
+              .includes(searchedText.toLowerCase())
+          ) {
+            return item;
+          } else {
+            if (
+              item.items.filter((x) =>
+                x.toLowerCase().includes(searchedText.toLowerCase()),
+              ).length > 0
+            ) {
+              return item;
+            }
+          }
+        }).length > 0
       ) {
-        console.log(
-          value,
-          'TWO=======>',
-          idx(value, (_) =>
-            _.category.subcategories.filter((item) => {
-              item.subCategoryname
-                .toLowerCase()
-                .includes(searchedText.toLowerCase());
-            }),
-          ),
-        );
         return value;
-      } else {
-        // return false;
       }
     }),
   );

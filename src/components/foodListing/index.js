@@ -1,26 +1,14 @@
 // import SpinnerLoader from 'components/common/spinnerLoader';
 
-import idx from 'idx';
-import React, {useRef, useState, useEffect} from 'react';
-import {
-  Dimensions,
-  Modal,
-  Text,
-  View,
-  TouchableOpacity,
-  ActivityIndicator,
-  TextInput,
-  FlatList,
-} from 'react-native';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import IconsFa from 'react-native-vector-icons/FontAwesome';
-import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
-import colors from 'constants/color';
-import Loader from 'components/common/loader';
 import EmptyComponent from 'components/common/emptyComponent';
+import Loader from 'components/common/loader';
+import colors from 'constants/color';
 import {titleFilter} from 'helpers/dataFilter';
-console.log(titleFilter, 'DataFilterDataFilter');
-const {height, width} = Dimensions.get('window');
+import idx from 'idx';
+import React, {useEffect, useState} from 'react';
+import {FlatList, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
+import IconsFa from 'react-native-vector-icons/FontAwesome';
 
 const foodListing = (props) => {
   const {fetchingFoods, allFoods} = props;
