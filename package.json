@@ -1,0 +1,53 @@
+{
+  "name": "NewProject",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@react-native-community/async-storage": "^1.9.0",
+    "@react-native-community/datetimepicker": "^2.3.2",
+    "@react-native-community/netinfo": "^5.7.1",
+    "apisauce": "^1.1.1",
+    "idx": "^2.5.6",
+    "lodash": "^4.17.15",
+    "moment": "^2.25.3",
+    "react": "16.11.0",
+    "react-native": "0.62.2",
+    "react-native-exception-handler": "^2.10.8",
+    "react-native-image-picker": "^2.3.1",
+    "react-native-keyboard-aware-scroll-view": "^0.9.1",
+    "react-native-navigation": "^6.5.0",
+    "react-native-permissions": "^2.1.1",
+    "react-native-responsive-fontsize": "^0.4.3",
+    "react-native-restart": "^0.0.17",
+    "react-native-simple-toast": "^1.1.2",
+    "react-native-splash-screen": "^3.2.0",
+    "react-native-vector-icons": "^7.0.0",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@babel/runtime": "^7.10.4",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "babel-jest": "^26.1.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "eslint": "^7.3.1",
+    "jest": "^26.1.0",
+    "metro-react-native-babel-preset": "^0.60.0",
+    "react-test-renderer": "16.11.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
