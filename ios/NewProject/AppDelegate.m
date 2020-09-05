@@ -3,6 +3,7 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <ReactNativeNavigation/ReactNativeNavigation.h>
 
 #if DEBUG
 #import <FlipperKit/FlipperClient.h>
@@ -27,6 +28,9 @@ static void InitializeFlipper(UIApplication *application) {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [ReactNativeNavigation bootstrapWithDelegate:self launchOptions:launchOptions];
+  
+  return YES;
 #if DEBUG
   InitializeFlipper(application);
 #endif
@@ -53,6 +57,7 @@ static void InitializeFlipper(UIApplication *application) {
 #else
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
+  
 }
 
 @end

@@ -22,4 +22,4 @@ TextInput.defaultProps.allowFontScaling = false;
 Navigation.events().registerAppLaunchedListener(() => {
   registerScreens(store, Provider);
 });
-AppRegistry.registerComponent('MeetUp', () => App);
+AppRegistry.registerComponent('NewApp', () => App);

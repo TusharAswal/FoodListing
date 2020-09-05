@@ -14,6 +14,7 @@
     "@react-native-community/datetimepicker": "^2.3.2",
     "@react-native-community/netinfo": "^5.7.1",
     "apisauce": "^1.1.1",
+    "fetch-mock": "^9.10.7",
     "idx": "^2.5.6",
     "lodash": "^4.17.15",
     "moment": "^2.25.3",
@@ -23,7 +24,6 @@
     "react-native-image-picker": "^2.3.1",
     "react-native-keyboard-aware-scroll-view": "^0.9.1",
     "react-native-navigation": "^6.5.0",
-    "react-native-permissions": "^2.1.1",
     "react-native-responsive-fontsize": "^0.4.3",
     "react-native-restart": "^0.0.17",
     "react-native-simple-toast": "^1.1.2",
@@ -32,6 +32,7 @@
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.5.4",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0"
   },
@@ -48,6 +49,11 @@
     "react-test-renderer": "16.11.0"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "timers": "fake",
+    "testEnvironment": "jsdom",
+    "setupFiles": [
+      "./jestConfig/index.js"
+    ]
   }
 }

@@ -4,7 +4,6 @@ import {RFValue} from 'react-native-responsive-fontsize';
 import IconsFa from 'react-native-vector-icons/FontAwesome';
 
 const EmptyComponent = ({title, icon, color, iconSize, fontStyle}) => {
-  console.log(iconSize, 'iconSizeiconSizeiconSize');
   return (
     <View
       style={{

@@ -1,23 +1,18 @@
 // @ts-nocheck
 import API from 'constants/api';
-import RestClient from 'utils/restClient';
 import * as Types from 'constants/actionTypes';
+
 export function fetchFoodList() {
-  return async (dispatch) => {
+  return (dispatch) => {
     dispatch({type: Types.FETCH_FOODS_REQUEST});
-    try {
-      const response = await RestClient.getCall(`${API.FETCH_FOODS}`);
-      if (response) {
-        console.log('FETCH_FOODS_SUCCESS', response);
+    return fetch(`${API.FETCH_FOODS}`)
+      .then((res) => res.json())
+      .then((body) => {
         dispatch({
           type: Types.FETCH_FOODS_SUCCESS,
-          payload: response,
+          payload: body,
         });
-      } else {
-        dispatch({type: Types.FETCH_FOODS_FAIL});
-      }
-    } catch (error) {
-      dispatch({type: Types.FETCH_FOODS_FAIL});
-    }
+      })
+      .catch((ex) => dispatch({type: Types.FETCH_FOODS_FAIL}));
   };
 }

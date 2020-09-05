@@ -3,76 +3,32 @@ import idx from 'idx';
 export const titleFilter = (array, searchedText) => {
   return idx(array, (_) =>
     _.categories.filter((value) => {
-      if (
-        value.category.categoryName
-          .toLowerCase()
-          .includes(searchedText.toLowerCase())
-      ) {
-        return value;
-      } else if (
+      let categoryPresent = value.category.categoryName
+        .toLowerCase()
+        .includes(searchedText.toLowerCase()); //If data is found in categories
+
+      let subCategoryPresent =
         value.category.subcategories.filter((item) => {
-          if (
-            item.subCategoryname
-              .toLowerCase()
-              .includes(searchedText.toLowerCase())
-          ) {
-            return item;
+          let subCatChildFound = item.subCategoryname
+            .toLowerCase()
+            .includes(searchedText.toLowerCase());
+          let subCategoryItemFound =
+            item.items.filter((x) =>
+              x.toLowerCase().includes(searchedText.toLowerCase()),
+            ).length > 0;
+          if (subCatChildFound) {
+            return item; //If data is found in sub-categories
           } else {
-            if (
-              item.items.filter((x) =>
-                x.toLowerCase().includes(searchedText.toLowerCase()),
-              ).length > 0
-            ) {
-              return item;
+            if (subCategoryItemFound) {
+              return item; //If data is found in sub-categories child
             }
           }
-        }).length > 0
-      ) {
+        }).length > 0;
+      if (categoryPresent) {
+        return value;
+      } else if (subCategoryPresent) {
         return value;
       }
     }),
   );
 };
-
-// export const titleFilter = (array, searchedText) => {
-//   let filteredResult = [];
-//   let item = idx(array, (_) =>
-//     _.categories.filter((value) => {
-//       if (
-//         value.category.categoryName
-//           .toLowerCase()
-//           .includes(searchedText.toLowerCase())
-//       ) {
-//         console.log(value, 'ONE=======>');
-//         return value;
-//       } else {
-//         if (
-//           idx(value, (_) =>
-//             _.category.subcategories.filter((item) => {
-//               if (
-//                 item.subCategoryname
-//                   .toLowerCase()
-//                   .includes(searchedText.toLowerCase())
-//               ) {
-//                 console.log(item, 'TWO=======>');
-//                 return item;
-//               } else {
-//                 console.log(item, 'THRE=======>');
-//                 return idx(item, (_) =>
-//                   _.items.filter(
-//                     (x) =>
-//                       x.toLowerCase().includes(searchedText.toLowerCase())
-//                         .length > 0,
-//                   ),
-//                 );
-//               }
-//             }),
-//           )
-//         ) {
-//           return value;
-//         }
-//       }
-//     }),
-//   );
-//   return item;
-// };
